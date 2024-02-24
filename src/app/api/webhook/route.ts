@@ -2,8 +2,8 @@ import { headers } from "next/headers"
 import { NextResponse } from "next/server"
 import Stripe from "stripe"
 
-const stripe = new Stripe("sk_test_51OnBlfDrabIDWDLFpvQZriKFdHk6pbIec8mTUVCVeioHVe5o3UM1j1KpehpgHQJBQrlVwQTnD4G200P460HN2UbC00PuVPytF6")
-const endpointSecret = "whsec_YKEnZBKgckfKEP1JLly7jOmfXpf5nqMH"
+const stripe = new Stripe(process.env.STRIPE_API_KEY as string)
+const endpointSecret = process.env.STRIPE_SECRET_ENDPOINT as string;
 
 export const POST = async (request:any) => {
   const body = await request.text();
